@@ -282,7 +282,7 @@ function App() {
 
 	return (
 		<div className="container bg-info bg-opacity-10 py-5 min-vh-100">
-			<div className="row d-flex justify-content-center align-items-center rounded mx-auto p-2 g-3">
+			<div className=" d-flex justify-content-center align-items-center rounded mx-auto p-2 gap-3">
 				<div className="col-md-4 text-start bg-primary text-white p-4 rounded">
 					<img
 						src={pic}
@@ -299,7 +299,7 @@ function App() {
 				</div>
 
 				<div className="col-md-8 bg-white p-4 rounded">
-					<ul className="nav nav-tabs mb-3">
+					<ul className="nav nav-tabs bg-transparent mb-3">
 						{steps.map((step, index) => (
 							<li
 								key={index}
@@ -308,7 +308,9 @@ function App() {
 								<button
 									type="button"
 									className={`nav-link ${
-										currentStep === index ? "active" : ""
+										currentStep === index
+											? "active bg-info bg-opacity-10 text-dark"
+											: ""
 									}`}
 									onClick={() => handleStepClick(index)}
 								>
@@ -331,11 +333,12 @@ function App() {
 						</button>
 						<button
 							type="button"
-							className="btn btn-primary"
+							className={`btn ${
+								currentStep === steps.length - 1 ? "btn-success" : "btn-primary"
+							}`}
 							onClick={handleNext}
-							disabled={currentStep === steps.length - 1}
 						>
-							Next
+							{currentStep === steps.length - 1 ? "Finish" : "Next"}
 						</button>
 					</div>
 				</div>
